@@ -25,7 +25,7 @@ class QuestsController < ApplicationController
 
     respond_to do |format|
       if @quest.save
-        format.html { redirect_to quest_url(@quest), notice: "Quest was successfully created." }
+        format.html { redirect_to quest_url(@quest), notice: "Quest was successfully created. YAY" }
         format.json { render :show, status: :created, location: @quest }
       else
         format.html { render :new, status: :unprocessable_entity }
