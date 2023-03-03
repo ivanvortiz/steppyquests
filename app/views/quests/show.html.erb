@@ -10,5 +10,37 @@
   <%= @quest.description %>
 </p>
 
-<%= link_to 'Edit', edit_quest_path(@quest) %> |
-<%= link_to 'Back', quests_path %>
+<div>
+  <%= link_to "Edit this quest", edit_quest_path(@quest) %> |
+  <%= link_to "Back to quests", quests_path %>
+
+  <%= button_to "Destroy this quest", @quest, method: :delete %>
+</div>
+
+<h2>Scenes</h2>
+<% @quest.scenes.each do |scene| %>
+  <p>
+    <strong>title:</strong>
+    <%= scene.title %>
+  </p>
+
+  <p>
+    <strong>Scene:</strong>
+    <%= scene.body %>
+  </p>
+<% end %>
+
+<h2>Add a scene:</h2>
+<%= form_with model: [ @quest, @quest.scenes.build ] do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
