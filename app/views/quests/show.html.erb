@@ -28,6 +28,16 @@
     <strong>Scene:</strong>
     <%= scene.body %>
   </p>
+
+  <p>
+    <%= link_to scene.title, quest_scene_path(scene.quest, scene) %>
+  </p>
+
+<p>
+  <strong>id:</strong>
+  <%= scene.id %>
+</p>
+
 <% end %>
 
 <h2>Add a scene:</h2>

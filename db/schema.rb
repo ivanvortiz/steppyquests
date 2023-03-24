@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_03_184656) do
+ActiveRecord::Schema.define(version: 2023_03_17_181456) do
 
   create_table "quests", force: :cascade do |t|
     t.string "title"
@@ -28,5 +28,17 @@ ActiveRecord::Schema.define(version: 2023_03_03_184656) do
     t.index ["quest_id"], name: "index_scenes_on_quest_id"
   end
 
+  create_table "steps", force: :cascade do |t|
+    t.string "choice"
+    t.integer "source_scene_id", null: false
+    t.integer "target_scene_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["source_scene_id"], name: "index_steps_on_source_scene_id"
+    t.index ["target_scene_id"], name: "index_steps_on_target_scene_id"
+  end
+
   add_foreign_key "scenes", "quests"
+  add_foreign_key "steps", "scenes", column: "source_scene_id"
+  add_foreign_key "steps", "scenes", column: "target_scene_id"
 end

@@ -1,9 +1,9 @@
 class CreateSteps < ActiveRecord::Migration[6.1]
   def change
     create_table :steps do |t|
-      t.string :choices
-      t.references :scene, null: false, foreign_key: true
-
+      t.string :choice
+      t.references :source_scene, null: false, foreign_key: {to_table: 'scenes'}
+      t.references :target_scene, null: false, foreign_key: {to_table: 'scenes'}
       t.timestamps
     end
   end
