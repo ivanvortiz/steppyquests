@@ -25,8 +25,8 @@
   </p>
   
   <p>
-    <%= link_to step.choice, scene_step_path(step.scene, step) %>
-  </p>
+    <%=link_to step.choice, quest_scene_path(@scene.quest, step.target_scene)%>
+    </p>
 
 <p>
   <strong>id:</strong>
